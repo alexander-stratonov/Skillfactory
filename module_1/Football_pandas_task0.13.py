@@ -9,7 +9,10 @@ index='Club',
 columns='Position',
 aggfunc='count',
 fill_value=0)
-
-s = round(pivot['GK'].mean(),3)
 display(pivot)
+#1
+s = round(pivot['GK'].mean(),3)
 display(s)
+#2
+a = (pivot['CM'].value_counts())
+display(a)
