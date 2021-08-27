@@ -1,7 +1,7 @@
 import pandas as pd
 from IPython.display import display
-#df = pd.read_csv('C:/Users/user/Downloads/data_sf.csv')
-df = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/data_sf.csv')
+df = pd.read_csv('C:/Users/user/Downloads/data_sf.csv')
+#df = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/data_sf.csv')
 #with pd.option_context('display.max_rows', None, 'display.max_columns', None):
 #    display(df)
 #1
@@ -17,6 +17,9 @@ s1 = df.pivot_table(values = ['SprintSpeed'],
 s1 = s1['SprintSpeed']
 display(s1.max().sort_values(ascending=False).head(5))
 #3
-s2 = s1[(s1.Position == 'ST') & (s1.SprintSpeed > s1.SprintSpeed.mean())]
-display(s2)
+s2 = df.loc[df['Position'].isin(['RB','LM', 'RM','CF', 'RWM', 'RS','ST'])
+             ].pivot_table(values='SprintSpeed',index=['Club'],
+columns=['Position'],
+aggfunc='mean')
+display(s2['ST'].sort_values(ascending=False).head(5))
 
