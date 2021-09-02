@@ -25,5 +25,4 @@ temp = pd.read_csv(os.path.join('C:/Users/Крис/Documents/GitHub/Skillfactory
 data = pd.concat([data, temp])
 temp = pd.read_csv(os.path.join('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/data', 'ratings_10.txt'), names = ['userId', 'movieId', 'rating', 'timestamp'] )
 data = pd.concat([data, temp])
-
 display(data)
