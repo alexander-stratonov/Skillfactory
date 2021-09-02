@@ -20,6 +20,14 @@ purchase_log = {
 }
 items_df = pd.DataFrame(items_dict)
 purchase_df = pd.DataFrame(purchase_log)
-#1 and 2
+
+#1 and 2 and 3
 joined = purchase_df.merge(items_df, on='item_id', how='outer')
-display(joined)
+f=joined.fillna(0)
+display(f)
+
+#4
+display(f['price'] * f['stock_count'])
+
+#5
+display(sum(f['price'] * f['stock_count']))
