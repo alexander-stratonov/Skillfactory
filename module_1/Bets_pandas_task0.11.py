@@ -8,6 +8,7 @@ log = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Str
 log.columns = ['user_id', 'time', 'bet', 'win']
 sample = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/sample.csv')
 #sample = pd.read_csv('C:/Users/user/Downloads/sample.csv')
+display(log)
 display(sample)
 
 #1
@@ -19,8 +20,7 @@ display(sample2)
 sample2.City = sample.City.apply(lambda b : str(b).lower())
 display(sample2)
 
-#3
-sample3 = sample.copy()
+#3 and 4
 def profession_code(c):
     if c == 'Рабочий':
         return 0
@@ -28,5 +28,76 @@ def profession_code(c):
         return 1
     else:
         return 2
-sample3['Profession'] = sample.Profession.apply(profession_code)
-display(sample3)
+sample2['Profession'] = sample.Profession.apply(profession_code)
+display(sample2)
+
+#5
+def age_category(age):
+    if age < 23:
+        return 'молодой'
+    elif 23 <= age <= 35:
+        return 'средний'
+    elif age > 35:
+        return 'зрелый'
+
+#6
+sample['Age_category'] = sample.Age.apply(age_category)
+display(sample)
+
+#7
+def user_corr(u):
+  if u == '#error':
+    return ''
+  else:
+    return u.replace('Запись пользователя № -', '')
+log['user_id'] = log.user_id.apply(user_corr)
+display(log)
+
+#8
+t = log.time[0]
+t = str(t).replace('[', '')
+display(t)
+
+#9
+def time_corr(tt):
+    if pd.isna(tt):
+        return tt
+    else:
+        return str(tt)[1:]
+log.time = log.time.apply(time_corr)
+display(log)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
