@@ -32,6 +32,7 @@ sample2['Profession'] = sample.Profession.apply(profession_code)
 display(sample2)
 
 #5
+print('ЗАДАНИЕ №5')
 def age_category(age):
     if age < 23:
         return 'молодой'
@@ -41,16 +42,18 @@ def age_category(age):
         return 'зрелый'
 
 #6
+print('ЗАДАНИЕ №6')
 sample['Age_category'] = sample.Age.apply(age_category)
 display(sample)
 
 #7
-def user_corr(u):
-  if u == '#error':
-    return ''
-  else:
-    return u.replace('Запись пользователя № -', '')
-log['user_id'] = log.user_id.apply(user_corr)
+print('ЗАДАНИЕ №7')
+def userid_change(u):
+    if u == '#error':
+        return''
+    else:
+        return u.replace('Запись пользователя № - ', '')
+log['user_id'] = log.user_id.apply(userid_change)
 display(log)
 
 #8
