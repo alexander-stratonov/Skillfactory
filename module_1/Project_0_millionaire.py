@@ -164,7 +164,7 @@ answers['25'] = 'Midnight Picture Show '
 print('ВОПРОС №26')
 answers26 = data[data['vote_average'] >= 7.9][['original_title', 'vote_average']]
 display(answers26)
-answers['26'] = 'Inside Out, The Dark Knight, 12 Years a Slave '
+answers['26'] = 'Inside Out, The Dark Knight, 12 Years a Slave'
 
 print('ВОПРОС №27')
 answers27 = data.copy()
