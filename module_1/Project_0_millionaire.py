@@ -4,7 +4,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from collections import Counter
 from IPython.display import display
-data = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/module_1/movie_bd_v5.csv')
+from itertools import combinations
+#data = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/module_1/movie_bd_v5.csv')
+data = pd.read_csv('C:/Users/user/Documents/GitHub/Skillfactory_Alexander_Stratoonv/module_1/movie_bd_v5.csv')
 profit = data.revenue - data.budget
 data['profit'] = profit
 with pd.option_context('display.max_columns', None):
@@ -62,7 +64,7 @@ display(answers10)
 answers['10'] = 'The Lone Ranger (tt1210819)'
 
 print('ВОПРОС №11')
-answers11 = pd.Series(data['genres'].str.cat(sep='|').split('|')).value_counts()[:5]
+answers11 = pd.Series(data['genres'].str.cat(sep='|').split('|')).value_counts()
 display(answers11)
 answers['11'] = 'Drama'
 
@@ -103,7 +105,76 @@ answers17 = data[data.cast.str.contains("Nicolas Cage")].genres.str.split('|').e
 display(answers17)
 answers['17'] = 'Action'
 
-#display(answers)
+print('ВОПРОС №18')
+answers18 = data[data['production_companies'].str.contains('Paramount Pictures')]
+answers18 = answers18[['profit', 'original_title', 'imdb_id']].sort_values('profit', ascending=False)
+display(answers18)
+answers['18'] = 'K-19: The Widowmaker (tt0267626)'
+
+print('ВОПРОС №19')
+answers19 = data.groupby(data['release_year'])['revenue'].sum().sort_values(ascending=False)
+display(answers19)
+answers['19'] = '2015'
+
+print('ВОПРОС №20')
+answers20 = data[data.production_companies.str.contains("Warner Bros", na=False)].groupby(
+    data['release_year'])['profit'].sum().sort_values(ascending=False)
+display(answers20)
+answers['20'] = '2014'
+
+print('ВОПРОС №21')
+answers21 = data.release_date.str.split('/').apply(lambda x: x[0]).value_counts()
+display(answers21.sort_values(ascending=False))
+answers['21'] = 'Сентябрь'
+
+print('ВОПРОС №22')
+answers22 = data.release_date.str.split('/').apply(lambda x: x[0]).value_counts()
+display(answers22[['6','7','8']].sum())
+answers['22'] = '450'
+
+print('ВОПРОС №23')
+answers23 = data.copy()
+answers23['mouth'] = pd.DatetimeIndex(answers23['release_date']).month
+answers23['directors'] = answers23.director.str.split('|')
+answers23 = answers23.explode('directors')
+answers23 = answers23[(answers23['mouth'] == 1) | (answers23['mouth'] == 2) | (answers23['mouth'] == 12)].value_counts(subset='directors')
+answers23 = answers23.idxmax()
+display(answers23)
+answers['23'] = 'Peter Jackson '
+
+print('ВОПРОС №24')
+answers24 = data.copy()
+answers24['production_companies'] = answers24['production_companies'].str.split('|')
+answers24 = answers24.explode('production_companies')
+answers24['title_length'] = answers24.original_title.apply(lambda x: len(x))
+answers24 = answers24.groupby('production_companies').title_length.mean().sort_values(ascending = False)
+display(answers24)
+answers['24'] = 'Four By Two Productions'
+
+print('ВОПРОС №25')
+answers25 = data.copy()
+answers25['production_companies'] = answers25['production_companies'].str.split('|')
+answers25['overview'] = answers25['overview'].str.split(' ')
+answers25 = answers25.explode('production_companies')
+answers25['overview'] = answers25.overview.apply(lambda x: len(x))
+answers25 = answers25.groupby('production_companies').overview.mean().sort_values(ascending = False)
+display(answers25)
+answers['25'] = 'Midnight Picture Show '
+
+print('ВОПРОС №26')
+answers26 = data[data['vote_average'] >= 7.9][['original_title', 'vote_average']]
+display(answers26)
+answers['26'] = 'Inside Out, The Dark Knight, 12 Years a Slave '
+
+print('ВОПРОС №27')
+answers27 = data.copy()
+answers27['cast_split'] = answers27['cast'].str.split('|')
+answers27['cast_togever'] = answers27.cast_split.apply(lambda x: list(combinations(x, 2)))
+answers27 = Counter(answers27['cast_togever'].sum()).most_common(1)
+display(answers27)
+answers['27'] = 'Daniel Radcliffe & Rupert Grint'
+
+display(answers)
 
 
 
