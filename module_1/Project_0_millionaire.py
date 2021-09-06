@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from collections import Counter
 from IPython.display import display
 from itertools import combinations
-#data = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/module_1/movie_bd_v5.csv')
-data = pd.read_csv('C:/Users/user/Documents/GitHub/Skillfactory_Alexander_Stratoonv/module_1/movie_bd_v5.csv')
+data = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/module_1/movie_bd_v5.csv')
+#data = pd.read_csv('C:/Users/user/Documents/GitHub/Skillfactory_Alexander_Stratoonv/module_1/movie_bd_v5.csv')
 profit = data.revenue - data.budget
 data['profit'] = profit
 with pd.option_context('display.max_columns', None):
