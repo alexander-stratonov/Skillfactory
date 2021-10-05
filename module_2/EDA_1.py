@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+from IPython.display import display
+
 np.set_printoptions(precision=4,suppress=True)
 first_line = [x*y for x in range(2, 100, 6) for y in range (7, 1, -2)]
 second_line = [x ** 0.5 for x in range(1000, 1101, 2)]
