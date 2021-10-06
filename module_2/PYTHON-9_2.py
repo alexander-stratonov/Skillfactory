@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 from IPython.display import display
 
 a = np.array([3,6,9])
@@ -48,3 +47,5 @@ display(round(a1, 2))
 display(sum(great_secret[great_secret>50]))
 #4
 display(great_secret.flatten()[150])
+#5
+display(round(sum(np.sort(great_secret, axis=0)[-1]),2))
