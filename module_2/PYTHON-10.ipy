@@ -1,9 +1,57 @@
 import numpy as np
 from IPython.display import display
 import  pandas as pd 
+import matplotlib.pyplot as plt
 
-df = pd.read_csv('C:/Users/user/Documents/GitHub/Skillfactory_Alexander_Stratoonv/module_2/tips.csv')
+df = pd.read_csv('C:/Users/user/Documents/GitHub/Skillfactory_Alexander_Stratonov/module_2/tips.csv')
 display(df.total_bill.max())
 
 %matplotlib inline
 df.plot()
+df['total_bill'].plot(kind = 'hist', grid = True, title = 'Общая сумма счёта')
+df['day'].value_counts().plot(kind = 'bar', 
+                              grid = True, 
+                              colormap = 'coolwarm', 
+                              title = 'Количество посетителей по дням')
+df.groupby(by = ['sex', 'smoker'])['tip'].mean().plot(kind = 'bar', grid= True)
+df[['total_bill', 'tip']].plot(kind = 'hist', 
+                               grid = True, 
+                               subplots = True, 
+                               title = ['Общая сумма счёта', 'Сумма чаевых'], 
+                               legend = False)
+df.plot(x = 'total_bill', 
+        y = 'tip', 
+        kind = 'scatter', 
+        grid = True, 
+        title = 'Общая сумма счёта Vs сумма чаевых')
+df.pivot_table(values = ['total_bill', 'tip'], 
+               index = 'day', 
+               aggfunc = 'mean').plot(kind = 'bar')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
