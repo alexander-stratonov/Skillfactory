@@ -1,7 +1,4 @@
-import numpy as np
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 from collections import Counter
 from IPython.display import display
 from itertools import combinations
@@ -175,65 +172,3 @@ display(answers27)
 answers['27'] = 'Daniel Radcliffe & Rupert Grint'
 
 display(answers)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
