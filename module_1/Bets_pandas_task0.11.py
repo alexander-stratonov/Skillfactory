@@ -1,24 +1,24 @@
 import pandas as pd
 from IPython.display import display
-users = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/users.csv')
-log = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/log.csv', header = None)
+users = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/module_1/users.csv')
+log = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/module_1/log.csv', header = None)
 #users = pd.read_csv('C:/Users/user/Downloads/users.csv', sep=';', encoding = 'koi8_r')
 #users.columns = ['user_id', 'email', 'geo']
 #log = pd.read_csv('C:/Users/user/Downloads/log.csv', header = None)
 log.columns = ['user_id', 'time', 'bet', 'win']
-sample = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/sample.csv')
+sample = pd.read_csv('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/module_1/sample.csv')
 #sample = pd.read_csv('C:/Users/user/Downloads/sample.csv')
-display(log)
-display(sample)
+display('0.1.', log)
+display('0.2', sample)
 
 #1
 sample2 = sample.copy()
 sample2.Age = sample.Age.apply(lambda a : a + 1)
-display(sample2)
+display('1', sample2)
 
 #2
 sample2.City = sample.City.apply(lambda b : str(b).lower())
-display(sample2)
+display('2', sample2)
 
 #3 and 4
 def profession_code(c):
@@ -29,7 +29,7 @@ def profession_code(c):
     else:
         return 2
 sample2['Profession'] = sample.Profession.apply(profession_code)
-display(sample2)
+display('3, 4', sample2)
 
 #5
 print('ЗАДАНИЕ №5')
@@ -59,7 +59,7 @@ display(log)
 #8
 t = log.time[0]
 t = str(t).replace('[', '')
-display(t)
+display('0', t)
 
 #9
 def time_corr(tt):
@@ -68,7 +68,7 @@ def time_corr(tt):
     else:
         return str(tt)[1:]
 log.time = log.time.apply(time_corr)
-display(log)
+display('0', log)
 
 
 

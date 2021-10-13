@@ -24,10 +24,10 @@ purchase_df = pd.DataFrame(purchase_log)
 #1 and 2 and 3
 joined = purchase_df.merge(items_df, on='item_id', how='outer')
 f=joined.fillna(0)
-display(f)
+display('1,2,3', f)
 
 #4
-display(f['price'] * f['stock_count'])
+display('4', f['price'] * f['stock_count'])
 
 #5
-display(sum(f['price'] * f['stock_count']))
+display('5', sum(f['price'] * f['stock_count']))
