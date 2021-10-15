@@ -1,7 +1,7 @@
 import numpy as np
 from IPython.display import display
 
-students = np.fromfile('C:/Users/user/Documents/GitHub/Skillfactory_Alexander_Stratoonv/module_2/students.txt', sep='\t').reshape(-1,4)
+students = np.fromfile('C:/Users/Крис/Documents/GitHub/Skillfactory_Alexander_Stratonov/module_2/students.txt', sep='\t').reshape(-1,4)
 display(students)
 mean = np.mean(students[:,-1])
 display(mean)
