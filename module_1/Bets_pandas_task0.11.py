@@ -59,7 +59,7 @@ display(log)
 #8
 t = log.time[0]
 t = str(t).replace('[', '')
-display('0', t)
+display('8', t)
 
 #9
 def time_corr(tt):
@@ -68,39 +68,4 @@ def time_corr(tt):
     else:
         return str(tt)[1:]
 log.time = log.time.apply(time_corr)
-display('0', log)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+display('9', log)
