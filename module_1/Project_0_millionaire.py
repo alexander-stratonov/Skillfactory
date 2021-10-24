@@ -121,7 +121,7 @@ answers['20'] = '2014'
 
 print('ВОПРОС №21')
 answers21 = data.release_date.str.split('/').apply(lambda x: x[0]).value_counts()
-display(answers21.sort_values(ascending=False))
+display(answers21.sort_values(ascending=False).head(1))
 answers['21'] = 'Сентябрь'
 
 print('ВОПРОС №22')
@@ -145,7 +145,7 @@ answers24['production_companies'] = answers24['production_companies'].str.split(
 answers24 = answers24.explode('production_companies')
 answers24['title_length'] = answers24.original_title.apply(lambda x: len(x))
 answers24 = answers24.groupby('production_companies').title_length.mean().sort_values(ascending = False)
-display(answers24)
+display(answers24.head(1))
 answers['24'] = 'Four By Two Productions'
 
 print('ВОПРОС №25')
@@ -155,7 +155,7 @@ answers25['overview'] = answers25['overview'].str.split(' ')
 answers25 = answers25.explode('production_companies')
 answers25['overview'] = answers25.overview.apply(lambda x: len(x))
 answers25 = answers25.groupby('production_companies').overview.mean().sort_values(ascending = False)
-display(answers25)
+display(answers25.head(1))
 answers['25'] = 'Midnight Picture Show '
 
 print('ВОПРОС №26')
