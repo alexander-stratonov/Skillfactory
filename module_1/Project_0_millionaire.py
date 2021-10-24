@@ -12,17 +12,17 @@ answers = {}
 
 print('ВОПРОС №1')
 answers1 = data.sort_values('budget', ascending=False)
-display(answers1)
+display(answers1.head(1))
 answers['1'] = 'Pirates of the Caribbean: On Stranger Tides (tt1298650)'
 
 print('ВОПРОС №2')
 answers2 = data.sort_values('runtime', ascending=False)
-display(answers2)
+display(answers2.head(1))
 answers['2'] = 'Gods and Generals (tt0279111)'
 
 print('ВОПРОС №3')
 answers3 = data.sort_values('runtime', ascending=True)
-display(answers3)
+display(answers3.tail(1))
 answers['3'] = 'Winnie the Pooh (tt1449283)'
 
 print('ВОПРОС №4')
@@ -37,51 +37,51 @@ answers['5'] = '107'
 
 print('ВОПРОС №6')
 answers6 = data.sort_values('profit', ascending=False)
-display(answers6)
+display(answers6.head(1))
 answers['6'] = 'Avatar (tt0499549)'
 
 print('ВОПРОС №7')
 answers7 = data.sort_values('profit', ascending=True)
-display(answers7)
+display(answers7.head(1))
 answers['7'] = 'The Lone Ranger (tt1210819)'
 
 print('ВОПРОС №8')
 answers8 = data[data.revenue > data.budget]
-display(answers8)
+display(len(answers8))
 answers['8'] = '1478'
 
 print('ВОПРОС №9')
 answers9 = data[(data.release_year == 2008)].sort_values('profit', ascending=False)
-display(answers9)
+display(answers9.head(1))
 answers['9'] = 'The Dark Knight (tt0468569)'
 
 print('ВОПРОС №10')
 answers10 = data[(data.release_year >= 2012) &(data.release_year <= 2014)].sort_values('profit', ascending=True)
-display(answers10)
+display(answers10.head(1))
 answers['10'] = 'The Lone Ranger (tt1210819)'
 
 print('ВОПРОС №11')
 answers11 = pd.Series(data['genres'].str.cat(sep='|').split('|')).value_counts()
-display(answers11)
+display(answers11.head(1))
 answers['11'] = 'Drama'
 
 print('ВОПРОС №12')
 answers12 = data[data.profit > 0].copy()
 answers12.genres = answers12.genres.str.split('|')
 answers12 = answers12.genres.explode().value_counts()
-display(answers12)
+display(answers12.head(1))
 answers['12'] = 'Drama'
 
 print('ВОПРОС №13')
 answers13 = data.groupby('director').sum().sort_values('profit', ascending=False)
-display(answers13)
+display(answers13.head(1))
 answers['13'] = 'Peter Jackson'
 
 print('ВОПРОС №14')
 answers14 = data[data.genres.str.contains("Action")]
 answers14 = answers14['director'].str.cat(sep='|') 
 answers14 = pd.Series(answers14.split('|')).value_counts(ascending=False) 
-display(answers14)
+display(answers14.head(1))
 answers['14'] = 'Robert Rodriguez'
 
 print('ВОПРОС №15')
@@ -89,34 +89,34 @@ answers15 = data.copy()
 answers15.cast = data.cast.apply(lambda x: str(x).split('|'))
 answers15 = answers15.explode('cast')
 answers15 = answers15[answers15.release_year == 2012].groupby('cast').revenue.sum().sort_values(ascending=False)
-display(answers15)
+display(answers15.head(1))
 answers['15'] = 'Chris Hemsworth'
 
 print('ВОПРОС №16')
 answers16 = pd.Series(data[data.budget > data.budget.mean()].cast.str.split('|').sum()).value_counts() 
-display(answers16)
+display(answers16.head(1))
 answers['16'] = 'Matt Damon'
 
 print('ВОПРОС №17')
 answers17 = data[data.cast.str.contains("Nicolas Cage")].genres.str.split('|').explode().value_counts() 
-display(answers17)
+display(answers17.head(1))
 answers['17'] = 'Action'
 
 print('ВОПРОС №18')
 answers18 = data[data['production_companies'].str.contains('Paramount Pictures')]
 answers18 = answers18[['profit', 'original_title', 'imdb_id']].sort_values('profit', ascending=False)
-display(answers18)
+display(answers18.tail(1))
 answers['18'] = 'K-19: The Widowmaker (tt0267626)'
 
 print('ВОПРОС №19')
 answers19 = data.groupby(data['release_year'])['revenue'].sum().sort_values(ascending=False)
-display(answers19)
+display(answers19.head(1))
 answers['19'] = '2015'
 
 print('ВОПРОС №20')
 answers20 = data[data.production_companies.str.contains("Warner Bros", na=False)].groupby(
     data['release_year'])['profit'].sum().sort_values(ascending=False)
-display(answers20)
+display(answers20.head(1))
 answers['20'] = '2014'
 
 print('ВОПРОС №21')
