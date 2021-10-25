@@ -1,12 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 13 00:53:22 2021
+import pandas as pd
 
-@author: Kris
-"""
+df = pd.DataFrame({
+    'men': [80.2, 80.8, 57.5, 98, 50.5, 73.8, 77.4, 59.7, 77.9, 52.6],
+    'women': [57.9, 57.3, 72.8, 48.2, 59.5, 48.3, 61.2, 53.9, 53.9, 70.7]
+}).astype(float)
 
-a = 'python'
-b = 'is'
-c = 'excellent'
-d = a[0]+c[0]+a[-1]+b
-print(d)
+a = df.men.mean()
+print(a)
